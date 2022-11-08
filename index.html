@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + TS</title>
+    <style>
+      .container {
+        margin-top: 16px;
+        height: 480px;
+
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        justify-items: center;
+      }
+
+      video {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <button id="startRecordBtn">开始录制视频</button>
+      <button id="startBodyDetect">开始检测人体</button>
+    </section>
+    <section class="container">
+      <video autoplay muted id="real-camera" width="640" height="480"></video>
+      <video autoplay muted id="mask-video" width="640" height="480"></video>
+    </section>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
