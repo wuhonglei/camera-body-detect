@@ -4,6 +4,8 @@ import { getCameraStream } from "./camera";
 const realCameraVideo: HTMLVideoElement =
   document.querySelector("#real-camera")!;
 const maskVideo: HTMLVideoElement = document.querySelector("#mask-video")!;
+const bulletContainer: HTMLDivElement =
+  document.querySelector(".bullet-container")!;
 
 const startRecordBtn: HTMLButtonElement =
   document.querySelector("#startRecordBtn")!;
@@ -15,5 +17,5 @@ startRecordBtn.onclick = (): void => {
 };
 
 startBodyDetect.onclick = (): void => {
-  detectBodySegmentation(realCameraVideo, maskVideo);
+  detectBodySegmentation(realCameraVideo, maskVideo, bulletContainer);
 };

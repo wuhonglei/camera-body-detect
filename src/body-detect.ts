@@ -28,7 +28,8 @@ function createCanvasContext() {
 
 export async function detectBodySegmentation(
   realVideo: HTMLVideoElement,
-  virtualVideo: HTMLVideoElement
+  virtualVideo: HTMLVideoElement,
+  bulletContainer: HTMLDivElement
 ): Promise<void> {
   const { canvas: virtualCanvas, context: virtualContext } =
     createCanvasContext();
@@ -39,11 +40,11 @@ export async function detectBodySegmentation(
     console.timeEnd("detect body");
 
     virtualContext.putImageData(coloredPartImage, 0, 0);
-    setTimeout(detectFn, 40);
+    const dataUri = virtualCanvas.toDataURL("image/png");
+    bulletContainer.style.webkitMaskImage = `url(${dataUri})`;
+    setTimeout(detectFn, 30);
   };
-
-  setTimeout(detectFn, 40);
-
+  detectFn();
   playVirtualStream(virtualCanvas, virtualVideo);
 }
 
